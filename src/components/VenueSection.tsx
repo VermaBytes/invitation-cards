@@ -32,6 +32,8 @@ export function VenueSection() {
           <span className="venue-sun" />
           <span className="venue-arch"><i /><b /></span>
           <span className="venue-ground" />
+          <span className="venue-diya venue-diya--left" />
+          <span className="venue-diya venue-diya--right" />
         </div>
         <div className="venue-copy">
           <span className="eyebrow">शुभ मिलन स्थल</span>

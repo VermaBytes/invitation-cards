@@ -20,8 +20,16 @@ export const metadata: Metadata = {
     locale: "hi_IN",
     type: "website",
     ...(wedding.siteUrl ? { url: wedding.siteUrl } : {}),
+    images: [
+      {
+        url: "/images/invitation-og.svg",
+        width: 1200,
+        height: 630,
+        alt: `${wedding.bride.name} एवं ${wedding.groom.name} का विवाह निमंत्रण`,
+      },
+    ],
   },
-  twitter: { card: "summary", title, description },
+  twitter: { card: "summary_large_image", title, description, images: ["/images/invitation-og.svg"] },
   icons: { icon: "/favicon.svg" },
 };
 

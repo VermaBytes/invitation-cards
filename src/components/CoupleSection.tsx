@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useState } from "react";
 import { wedding } from "@/data/wedding";
 
 type Photo = (typeof wedding.photos)[keyof typeof wedding.photos];
@@ -12,27 +13,41 @@ function PhotoFrame({
   photo: Photo;
   kind: "bride" | "groom" | "couple";
 }) {
+  const [imageStatus, setImageStatus] = useState<"loading" | "loaded" | "error">("loading");
+
+  function placeholder() {
+    return (
+      <>
+        <span className="portrait-halo" />
+        {kind === "couple" ? (
+          <span className="portrait-pair" aria-hidden="true"><i /><i /></span>
+        ) : (
+          <span className={`portrait-figure portrait-figure--${kind}`} aria-hidden="true"><i /></span>
+        )}
+        <span className="portrait-caption">
+          {imageStatus === "error" ? `${photo.label} — चित्र उपलब्ध नहीं` : photo.label}
+        </span>
+      </>
+    );
+  }
+
   return (
     <div className={`portrait-placeholder portrait-placeholder--${kind}`}>
-      {photo.src ? (
-        <img src={photo.src} alt={photo.alt} />
-      ) : (
+      {photo.src && imageStatus !== "error" ? (
         <>
-          <span className="portrait-halo" />
-          {kind === "couple" ? (
-            <span className="portrait-pair" aria-hidden="true">
-              <i /><i />
-            </span>
-          ) : (
-            <span
-              className={`portrait-figure portrait-figure--${kind}`}
-              aria-hidden="true"
-            >
-              <i />
-            </span>
-          )}
-          <span className="portrait-caption">{photo.label}</span>
+          {imageStatus === "loading" && <span className="photo-loading" aria-hidden="true">चित्र खुल रहा है…</span>}
+          <img
+            src={photo.src}
+            alt={photo.alt}
+            loading="lazy"
+            decoding="async"
+            className={imageStatus === "loaded" ? "photo-loaded" : ""}
+            onLoad={() => setImageStatus("loaded")}
+            onError={() => setImageStatus("error")}
+          />
         </>
+      ) : (
+        placeholder()
       )}
     </div>
   );

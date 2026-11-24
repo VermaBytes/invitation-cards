@@ -39,7 +39,7 @@ export function ShareInvitation() {
   }
 
   return (
-    <section className="share-section section-shell">
+    <section className="share-section section-shell" id="share">
       <span className="eyebrow">स्नेह बांटें</span>
       <h2>इस शुभ निमंत्रण को साझा करें</h2>
       <div className="share-actions">

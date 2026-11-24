@@ -32,13 +32,13 @@ export const wedding = {
   wedding: {
     date: "2026-12-07",
     day: "सोमवार",
-    time: "रात्रि ८:०० बजे",
+    time: "रात्रि 8:00 बजे",
     ceremony: "वरपूजन एवं शुभविवाह",
     isoDateTime: "2026-12-07T20:00:00+05:30",
   },
   departure: {
     date: "2026-12-08",
-    time: "प्रातः ९:०० बजे",
+    time: "प्रातः 9:00 बजे",
     ceremony: "कलेवा एवं विदाई",
     isoDateTime: "2026-12-08T09:00:00+05:30",
   },
@@ -60,7 +60,7 @@ export const wedding = {
       "राधेश्याम, लालशरण, शंकर दयाल, रामनरेश, मायराम, मोनू, सचिन एवं समस्त मौर्य परिवार व मित्रगण.",
   },
   contacts: ["9918229618", "6392738508", "9450200924"],
-  siteUrl: "",
+  siteUrl: "https://babaliwedssanjay.netlify.app",
   music: {
     tracks: [
       {
@@ -72,6 +72,11 @@ export const wedding = {
       {
         title: "रोमांटिक वाद्य संगीत",
         src: "/music/romantic-instrumental.mp3",
+        enabled: false,
+      },
+      {
+        title: "विवाह उत्सव",
+        src: "/music/wedding-celebration.mp3",
         enabled: false,
       },
     ],

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">बबली मौर्या एवं हृदयांश संजय मौर्य का विवाह निमंत्रण</title>
+  <desc id="description">७ दिसंबर २०२६ को शुभ विवाह का मंगल निमंत्रण</desc>
+  <defs>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#7a3540"/>
+      <stop offset="1" stop-color="#2b0b13"/>
+    </radialGradient>
+    <pattern id="ornament" width="52" height="52" patternUnits="userSpaceOnUse">
+      <path d="M26 2c5 11 11 17 24 24-13 7-19 13-24 24C21 39 15 33 2 26 15 19 21 13 26 2Z" fill="none" stroke="#d3b46e" stroke-opacity=".14"/>
+      <circle cx="26" cy="26" r="3" fill="#e1c47d" fill-opacity=".26"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect width="1200" height="630" fill="url(#ornament)"/>
+  <rect x="28" y="28" width="1144" height="574" rx="8" fill="none" stroke="#d9bd7a" stroke-width="2"/>
+  <rect x="42" y="42" width="1116" height="546" rx="5" fill="none" stroke="#d9bd7a" stroke-opacity=".45"/>
+  <g fill="none" stroke="#dfc47f" stroke-width="2" opacity=".8">
+    <circle cx="600" cy="142" r="52"/>
+    <path d="M600 99c-17 0-23 13-17 24 4 8 16 11 16 25v10m1-59c17 0 23 13 17 24-4 8-16 11-16 25m-24-15c-16 1-25 13-19 23 5 9 17 11 19 24m47-47c16 1 25 13 19 23-5 9-17 11-19 24m-23-12v32m-32-14c-1 16 13 28 32 28s33-12 32-28"/>
+  </g>
+  <text x="600" y="240" text-anchor="middle" fill="#e5ce99" font-family="Nirmala UI, Mangal, serif" font-size="24" letter-spacing="3">॥ श्री गणेशाय नमः ॥</text>
+  <text x="600" y="342" text-anchor="middle" fill="#fff3d8" font-family="Nirmala UI, Mangal, serif" font-size="49">बबली मौर्या</text>
+  <text x="600" y="397" text-anchor="middle" fill="#d6b66f" font-family="Nirmala UI, serif" font-size="27">संग</text>
+  <text x="600" y="458" text-anchor="middle" fill="#fff3d8" font-family="Nirmala UI, Mangal, serif" font-size="45">हृदयांश संजय मौर्य</text>
+  <path d="M470 497h260" stroke="#d6b66f" stroke-opacity=".65"/>
+  <text x="600" y="548" text-anchor="middle" fill="#e5ce99" font-family="Nirmala UI, Mangal, serif" font-size="25">७ दिसंबर २०२६ • शुभ विवाह</text>
+</svg>

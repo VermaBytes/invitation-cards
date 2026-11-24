@@ -13,6 +13,8 @@ import { WhatsAppRSVP } from "@/components/WhatsAppRSVP";
 import { BackgroundMusic } from "@/components/BackgroundMusic";
 import { ShareInvitation } from "@/components/ShareInvitation";
 import { WeddingFooter } from "@/components/WeddingFooter";
+import { InvitationNavigation } from "@/components/InvitationNavigation";
+import { BackToTop } from "@/components/BackToTop";
 
 export default function Home() {
   const [opened, setOpened] = useState(false);
@@ -34,6 +36,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: reduceMotion ? 0 : 0.9 }}
           >
+            <InvitationNavigation />
             <InvitationReveal />
             <CoupleSection />
             <WeddingCountdown />
@@ -43,6 +46,7 @@ export default function Home() {
             <WhatsAppRSVP />
             <ShareInvitation />
             <WeddingFooter />
+            <BackToTop />
           </motion.div>
         )}
       </AnimatePresence>

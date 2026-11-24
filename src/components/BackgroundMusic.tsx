@@ -94,14 +94,15 @@ export function BackgroundMusic({ visible }: { visible: boolean }) {
     setStatus("");
     const track = tracks[nextIndex];
     if (!track.enabled) {
-      if (audio) audio.removeAttribute("src");
+      if (audio) {
+        audio.removeAttribute("src");
+        audio.load();
+      }
+      setStatus("ऑडियो फ़ाइलें जोड़ने के बाद संगीत चल सकेगा।");
+      setExpanded(true);
       return;
     }
 
-    if (audio) {
-      audio.src = track.src;
-      audio.load();
-    }
     if (resume) await startTrack(nextIndex);
   }, [fadeTo, startTrack]);
 
@@ -128,8 +129,9 @@ export function BackgroundMusic({ visible }: { visible: boolean }) {
   useEffect(() => {
     if (!visible || !("IntersectionObserver" in window)) return;
     const stages = [
-      { id: "parichay", track: 1 },
-      { id: "mangal-utsav", track: 2 },
+      { id: "nimantran", track: 1 },
+      { id: "parichay", track: 2 },
+      { id: "share", track: 3 },
     ];
     const observer = new IntersectionObserver(
       (entries) => {
