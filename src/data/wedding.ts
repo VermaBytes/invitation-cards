@@ -9,14 +9,18 @@ export const wedding = {
     residence: "ग्राम गौरिया, पोस्ट खरबहिया नं.-2, जिला खीरी, उत्तर प्रदेश.",
   },
   photos: {
-    bride: { src: null, alt: "बबली मौर्या का चित्र", label: "वधू का चित्र" },
+    bride: {
+      src: "/images/bride.png",
+      alt: "बबली मौर्या का चित्र",
+      label: "वधू का चित्र",
+    },
     groom: {
-      src: null,
+      src: "/images/groom.png",
       alt: "हृदयांश संजय मौर्य का चित्र",
       label: "वर का चित्र",
     },
     couple: {
-      src: null,
+      src: "/images/couple.png",
       alt: "बबली मौर्या एवं हृदयांश संजय मौर्य का चित्र",
       label: "नवयुगल का चित्र",
     },
@@ -64,20 +68,24 @@ export const wedding = {
   music: {
     tracks: [
       {
-        title: "गणेश वंदना",
-        src: "/music/ganesh-vandana.mp3",
-        enabled: false,
-      },
-      { title: "शहनाई", src: "/music/shehnai.mp3", enabled: false },
-      {
-        title: "रोमांटिक वाद्य संगीत",
-        src: "/music/romantic-instrumental.mp3",
-        enabled: false,
+        title: "विवाह गीत १",
+        src: "/music/video1_audio.mp3",
+        enabled: true,
       },
       {
-        title: "विवाह उत्सव",
-        src: "/music/wedding-celebration.mp3",
-        enabled: false,
+        title: "विवाह गीत २",
+        src: "/music/video2_audio.mp3",
+        enabled: true,
+      },
+      {
+        title: "विवाह गीत ३",
+        src: "/music/video3_audio.mp3",
+        enabled: true,
+      },
+      {
+        title: "विवाह गीत ४",
+        src: "/music/video4_audio.mp3",
+        enabled: true,
       },
     ],
   },
@@ -88,9 +96,10 @@ export function formatHindiDate(date: string): string {
     day: "numeric",
     month: "long",
     year: "numeric",
+    numberingSystem: "latn",
     timeZone: "UTC",
   }).format(new Date(`${date}T00:00:00Z`));
-  return toHindiDigits(formatted);
+  return formatted;
 }
 
 export function toHindiDigits(value: string | number): string {

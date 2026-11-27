@@ -15,6 +15,9 @@ import { ShareInvitation } from "@/components/ShareInvitation";
 import { WeddingFooter } from "@/components/WeddingFooter";
 import { InvitationNavigation } from "@/components/InvitationNavigation";
 import { BackToTop } from "@/components/BackToTop";
+import { WeddingHero } from "@/components/WeddingHero";
+import { CoupleGallery } from "@/components/CoupleGallery";
+import { WeddingAmbience } from "@/components/WeddingAmbience";
 
 export default function Home() {
   const [opened, setOpened] = useState(false);
@@ -32,13 +35,17 @@ export default function Home() {
         ) : (
           <motion.div
             key="invitation"
+            className="wedding-experience"
             initial={reduceMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: reduceMotion ? 0 : 0.9 }}
           >
+            <WeddingAmbience />
             <InvitationNavigation />
+            <WeddingHero />
             <InvitationReveal />
             <CoupleSection />
+            <CoupleGallery />
             <WeddingCountdown />
             <WeddingEventCards />
             <FamilySection />

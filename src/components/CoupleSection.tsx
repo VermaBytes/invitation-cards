@@ -64,7 +64,7 @@ export function CoupleSection() {
       </div>
       <div className="couple-grid">
         <motion.article
-          className="person-card"
+          className="person-card person-card--bride"
           initial={reduceMotion ? false : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -77,7 +77,7 @@ export function CoupleSection() {
         </motion.article>
         <span className="couple-ampersand">संग</span>
         <motion.article
-          className="person-card"
+          className="person-card person-card--groom"
           initial={reduceMotion ? false : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -87,17 +87,6 @@ export function CoupleSection() {
           <span className="person-label">वर</span>
           <h3>{wedding.groom.name}</h3>
           <p><span className="person-detail-label">पिता</span><br />{wedding.groom.father}<br />{wedding.groom.residence}</p>
-        </motion.article>
-        <motion.article
-          className="couple-photo-card"
-          initial={reduceMotion ? false : { opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.75 }}
-        >
-          <PhotoFrame photo={wedding.photos.couple} kind="couple" />
-          <span className="person-label">शुभ विवाह</span>
-          <h3>{wedding.bride.name} <i>संग</i> {wedding.groom.name}</h3>
         </motion.article>
       </div>
     </section>

@@ -13,6 +13,7 @@ export function BackgroundMusic({ visible }: { visible: boolean }) {
   const mutedRef = useRef(false);
   const operationRef = useRef(0);
   const fadeRef = useRef(0);
+  const wasVisibleRef = useRef(visible);
   const [trackIndex, setTrackIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(0.35);
@@ -56,7 +57,7 @@ export function BackgroundMusic({ visible }: { visible: boolean }) {
 
     const operation = ++operationRef.current;
     audio.src = track.src;
-    audio.loop = true;
+    audio.loop = false;
     audio.volume = 0;
     audio.load();
     try {
@@ -118,6 +119,22 @@ export function BackgroundMusic({ visible }: { visible: boolean }) {
     audio.volume = mutedRef.current ? 0 : volumeRef.current;
   }, [fadeTo]);
 
+  const stopTrack = useCallback(() => {
+    operationRef.current += 1;
+    fadeRef.current += 1;
+    const audio = audioRef.current;
+    if (audio) {
+      audio.pause();
+      audio.currentTime = 0;
+      audio.volume = mutedRef.current ? 0 : volumeRef.current;
+    }
+    playingRef.current = false;
+    trackIndexRef.current = 0;
+    setPlaying(false);
+    setTrackIndex(0);
+    setStatus("");
+  }, []);
+
   useEffect(() => {
     const handleEnvelopeOpen = () => {
       void startTrack(0, false);
@@ -127,30 +144,18 @@ export function BackgroundMusic({ visible }: { visible: boolean }) {
   }, [startTrack]);
 
   useEffect(() => {
-    if (!visible || !("IntersectionObserver" in window)) return;
-    const stages = [
-      { id: "nimantran", track: 1 },
-      { id: "parichay", track: 2 },
-      { id: "share", track: 3 },
-    ];
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          const stage = stages.find((item) => item.id === entry.target.id);
-          if (stage && stage.track !== trackIndexRef.current) {
-            void switchTrack(stage.track, playingRef.current);
-          }
-        }
-      },
-      { rootMargin: "-25% 0px -45% 0px" },
-    );
-    stages.forEach(({ id }) => {
-      const section = document.getElementById(id);
-      if (section) observer.observe(section);
-    });
-    return () => observer.disconnect();
-  }, [switchTrack, visible]);
+    if (wasVisibleRef.current && !visible) stopTrack();
+    wasVisibleRef.current = visible;
+  }, [stopTrack, visible]);
+
+  useEffect(() => {
+    window.addEventListener("pagehide", stopTrack);
+    window.addEventListener("wedding-envelope-close", stopTrack);
+    return () => {
+      window.removeEventListener("pagehide", stopTrack);
+      window.removeEventListener("wedding-envelope-close", stopTrack);
+    };
+  }, [stopTrack]);
 
   useEffect(() => () => {
     operationRef.current += 1;
@@ -183,7 +188,10 @@ export function BackgroundMusic({ visible }: { visible: boolean }) {
         src={tracks[0].enabled ? tracks[0].src : undefined}
         className="audio-hidden"
         preload="none"
-        loop
+        onEnded={() => {
+          const nextTrack = (trackIndexRef.current + 1) % tracks.length;
+          void switchTrack(nextTrack, true);
+        }}
         onError={() => {
           playingRef.current = false;
           setPlaying(false);

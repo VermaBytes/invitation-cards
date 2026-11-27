@@ -45,6 +45,14 @@ export function VenueSection() {
                 <span>Google Maps में पता खोजें</span><span aria-hidden="true">↗</span>
               </a>
             )}
+            <a
+              className="gold-button gold-button--outline"
+              href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(wedding.venue.address)}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>रास्ता देखें</span><span aria-hidden="true">↗</span>
+            </a>
             <button className="gold-button gold-button--outline" onClick={copyAddress}>
               {copied ? "पता कॉपी हुआ ✓" : "पता कॉपी करें"}
             </button>

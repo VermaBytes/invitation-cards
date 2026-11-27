@@ -143,7 +143,7 @@ export function EnvelopeIntro({
       </div>
       <div className="envelope-footer">
         <p>बबली मौर्या <span>✦</span> हृदयांश संजय मौर्य</p>
-        <button className="open-invitation" onClick={openEnvelope} disabled={isOpening}>
+        <button className="open-invitation" onClick={() => openEnvelope()} disabled={isOpening}>
           <span>{isOpening ? "शुभ निमंत्रण…" : "निमंत्रण खोलें"}</span>
           <span aria-hidden="true">↓</span>
         </button>
